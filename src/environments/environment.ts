@@ -12,12 +12,12 @@ export const environment = {
   falseValue: 'Faux',
   emptyForExport: '-----',
 
-  apiUrlProjetiav5: 'http://localhost:8036/api/',
-  loginUrl: 'http://localhost:8036/',
-  registerUrl: 'http://localhost:8036/register',
-  apiUrl: 'http://localhost:8036/',
+  apiUrlProjetiav5: 'https://test-hba6.onrender.com/api/',
+  loginUrl: 'https://test-hba6.onrender.com/',
+  registerUrl: 'https://test-hba6.onrender.com/register',
+  apiUrl: 'https://test-hba6.onrender.com/',
 
-  uploadMultipleUrl: 'http://localhost:8036/api/cloud/upload-multiple/bucket/ana',
+  uploadMultipleUrl: 'https://test-hba6.onrender.com/api/cloud/upload-multiple/bucket/ana',
 
   stripeUrl: "http://localhost:8036/api/payment/create-payment-intent/",
   stripePublicKey: "pk_test_51PVbvFRxVNBDrAcwfSz21b6EtPSpl6Fw3gUoKpIGWZN5whhSfS67W4hbtk95OMF1JSpxgYPyp9AmkNOAPLNFR7St00tDXFRjuV",
