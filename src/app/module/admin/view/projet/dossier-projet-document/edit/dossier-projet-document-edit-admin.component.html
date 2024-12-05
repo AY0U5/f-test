@@ -1,0 +1,146 @@
+    <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'dossierProjetDocument.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+        <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'dossierProjetDocument.tabPan' | translate}}">
+                        <div class="grid">
+
+                                    <div class="field col-11 md:col-6">
+                                        <label for="1">{{'dossierProjetDocument.dossierProjet' | translate}}</label>
+                                        <p-dropdown  appendTo="body"  [options]="dossierProjets" [(ngModel)]="item.dossierProjet" id="1" [filter]="true" filterMatchMode="contains"
+                                                     [showClear]="true" optionLabel="libelle" placeholder="{{'dossierProjetDocument.dossierProjet' | translate}}"  >
+                                        </p-dropdown>
+                                        
+                                    </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="2">{{'dossierProjetDocument.code' | translate}}<span style="color: red;">*</span></label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'dossierProjetDocument.code' | translate}}" id="2" [(ngModel)]="item.code"
+                                                   [ngClass]="{'ng-invalid ng-dirty' : !validDossierProjetDocumentCode}"  />
+                                            <small class='p-error' *ngIf='!validDossierProjetDocumentCode'>Code est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="3">{{'dossierProjetDocument.libelle' | translate}}<span style="color: red;">*</span></label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'dossierProjetDocument.libelle' | translate}}" id="3" [(ngModel)]="item.libelle"
+                                                   [ngClass]="{'ng-invalid ng-dirty' : !validDossierProjetDocumentLibelle}"  />
+                                            <small class='p-error' *ngIf='!validDossierProjetDocumentLibelle'>Libelle est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="4">{{'dossierProjetDocument.path' | translate}}</label>
+                                            <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'dossierProjetDocument.path' | translate}}" id="4" [(ngModel)]="item.path"
+                                                    />
+                                            
+                                        </div>
+
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="5">{{'dossierProjetDocument.content' | translate}}</label>
+                                            <textarea id="5" pInputTextarea rows="5" cols="30" placeholder="{{'dossierProjetDocument.content' | translate}}"  [(ngModel)]="item.content"
+                                                       ></textarea>
+                                            
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+                            <p-tabPanel header="{{'dossierProjetDocument.dossierProjetExigenceAppliques' | translate}}">
+                                <p-tabView [(activeIndex)]="activeTab">
+                                    <p-tabPanel header="Création">
+                                            <div class="grid">
+                                                            <div class="field col-11 md:col-6">
+                                                                <label>Exigence</label>
+                                                                <p-dropdown  appendTo="body"  [options]="exigences" [(ngModel)]="dossierProjetExigenceAppliquesElement.exigence"
+                                                                             id="2"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
+                                                                             placeholder="Exigence"  >
+                                                                </p-dropdown>
+                                                                
+                                                            </div>
+
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="3">{{'dossierProjetExigenceApplique.commentaire' | translate}}</label>
+                                                                <textarea id="3" pInputTextarea rows="5" cols="30" placeholder="{{'dossierProjetExigenceApplique.commentaire' | translate}}"  [(ngModel)]="dossierProjetExigenceAppliquesElement.commentaire"
+                                                                           ></textarea>
+                                                                
+                                                            </div>
+                                                            <div class="field col-11 md:col-6">
+                                                                <label>Dossier projet exigence etat</label>
+                                                                <p-dropdown  appendTo="body"  [options]="dossierProjetExigenceEtats" [(ngModel)]="dossierProjetExigenceAppliquesElement.dossierProjetExigenceEtat"
+                                                                             id="4"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
+                                                                             placeholder="Dossier projet exigence etat"  >
+                                                                </p-dropdown>
+                                                                
+                                                            </div>
+
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="5">Taux precision</label>
+                                                                <p-inputNumber class="mb-2 mr-2" id="tauxPrecision" placeholder="Taux precision"  [(ngModel)]="dossierProjetExigenceAppliquesElement.tauxPrecision"></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="field col-12 md:col-6">
+                                                                <label for="6">Pages</label>
+                                                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Pages"
+                                                                       id="6" [(ngModel)]="dossierProjetExigenceAppliquesElement.pages" autofocus   >
+                                                                
+                                                            </div>
+                                                <div class="field col-12 md:col-1">
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addDossierProjetExigenceAppliques()"></button>
+                                                </div>
+
+                                            </div>
+                                    </p-tabPanel>
+                                    <p-tabPanel header="Liste {{item.dossierProjetExigenceAppliques?.length > 0 ? '(' + item.dossierProjetExigenceAppliques?.length + ')' : ''}}">
+                                            <div class="card">
+                                                <p-table [value]="item.dossierProjetExigenceAppliques" [scrollable]="true" scrollHeight="200px">
+                                                    <ng-template pTemplate="header">
+                                                        <tr>
+                                                                        <th>Exigence</th>
+                                                                        <th>Commentaire</th>
+                                                                        <th>Dossier projet exigence etat</th>
+                                                                        <th>Taux precision</th>
+                                                                        <th>Pages</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-p let-i="rowIndex">
+                                                        <tr>
+                                                                    <td>{{p.exigence?.libelle}}</td>
+                                                                        <td>{{p.commentaire}}</td>
+                                                                    <td>{{p.dossierProjetExigenceEtat?.libelle}}</td>
+                                                                        <td>{{p.tauxPrecision}}</td>
+                                                                        <td>{{p.pages}}</td>
+                                                            <td>
+                                                                <button (click)="deleteDossierProjetExigenceAppliques(p,i)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                <button (click)="editDossierProjetExigenceAppliques(p,i)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                            </td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+
+                                    </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer" >
+            <div class="p-flexbox">
+
+                    <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="edit()"></button>
+
+
+                        <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+
+
+            </div>
+        </ng-template>
+
+    </p-dialog>

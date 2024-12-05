@@ -1,0 +1,72 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'dossierProjetDocument.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'dossierProjetDocument.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'dossierProjetDocument.dossierProjet' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'dossierProjetDocument.dossierProjet' | translate}}" autofocus  id="1" [ngModel]="item.dossierProjet?.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'dossierProjetDocument.code' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'dossierProjetDocument.code' | translate}}" autofocus  id="2" [ngModel]="item.code">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'dossierProjetDocument.libelle' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'dossierProjetDocument.libelle' | translate}}" autofocus  id="3" [ngModel]="item.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'dossierProjetDocument.path' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'dossierProjetDocument.path' | translate}}" autofocus  id="4" [ngModel]="item.path">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'dossierProjetDocument.content' | translate}}</label>
+                        <textarea id="5" pInputTextarea rows="5" cols="30" [disabled]="true" placeholder="{{'dossierProjetDocument.content' | translate}}"  [ngModel]="item.content"></textarea>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+            <p-tabPanel header="{{'dossierProjetDocument.dossierProjetExigenceAppliques' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="item.dossierProjetExigenceAppliques" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Exigence</th>
+                                        <th>Commentaire</th>
+                                        <th>Dossier projet exigence etat</th>
+                                        <th>Taux precision</th>
+                                        <th>Pages</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.exigence?.libelle}}</td>
+                                        <td>{{p.commentaire}}</td>
+                                        <td>{{p.dossierProjetExigenceEtat?.libelle}}</td>
+                                        <td>{{p.tauxPrecision}}</td>
+                                        <td>{{p.pages}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

@@ -1,0 +1,50 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'dossierProjetExigenceEtat.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'dossierProjetExigenceEtat.tabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'dossierProjetExigenceEtat.code' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'dossierProjetExigenceEtat.code' | translate}}" id="1" [(ngModel)]="item.code"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDossierProjetExigenceEtatCode}"  />
+                                                    <small class='p-error' *ngIf='!validDossierProjetExigenceEtatCode'>Code is obligatory.</small>
+                                                </div>
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'dossierProjetExigenceEtat.libelle' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'dossierProjetExigenceEtat.libelle' | translate}}" id="2" [(ngModel)]="item.libelle"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDossierProjetExigenceEtatLibelle}"  />
+                                                    <small class='p-error' *ngIf='!validDossierProjetExigenceEtatLibelle'>Libelle is obligatory.</small>
+                                                </div>
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'dossierProjetExigenceEtat.style' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'dossierProjetExigenceEtat.style' | translate}}" id="3" [(ngModel)]="item.style"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDossierProjetExigenceEtatStyle}"  />
+                                                    <small class='p-error' *ngIf='!validDossierProjetExigenceEtatStyle'>Style is obligatory.</small>
+                                                </div>
+
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-flexbox">
+
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="save()"></button>
+
+
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+
+
+                </div>
+            </ng-template>
+
+    </p-dialog>
