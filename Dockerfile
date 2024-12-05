@@ -35,8 +35,8 @@ COPY --from=build /app/dist/sakai-ng /usr/share/nginx/html
 COPY src/zyn/nginx/${PROFILE}/nginx.conf /etc/nginx/nginx.conf
 COPY src/zyn/nginx/${PROFILE}/default.conf /etc/nginx/conf.d/default.conf
 
-COPY src/zyn/ssl/${PROFILE}/cert.pem /etc/nginx/ssl/cert.pem
-COPY src/zyn/ssl/${PROFILE}/key.pem /etc/nginx/ssl/key.pem
+#COPY src/zyn/ssl/${PROFILE}/cert.pem /etc/nginx/ssl/cert.pem
+#COPY src/zyn/ssl/${PROFILE}/key.pem /etc/nginx/ssl/key.pem
 
 EXPOSE 80
 
