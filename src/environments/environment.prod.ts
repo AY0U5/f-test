@@ -10,10 +10,10 @@ export const environment = {
 
 
 
-  apiUrlProjetiav5: 'https://localhost:8036/api/',
-  loginUrl: 'https://localhost:8036/',
-  registerUrl: 'https://localhost:8036/register',
-  apiUrl: 'https://localhost:8036/',
+  apiUrlProjetiav5: 'https://test-hba6.onrender.com/api/',
+  loginUrl: 'https://test-hba6.onrender.com/',
+  registerUrl: 'https://test-hba6.onrender.com/register',
+  apiUrl: 'https://test-hba6.onrender.com/',
 
 
   stripeUrl: "https://localhost:8036/api/payment/create-payment-intent/",
